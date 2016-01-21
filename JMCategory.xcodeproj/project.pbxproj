@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1A3357C81C50BF5200B18DB3 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 1A3357C71C50BF5200B18DB3 /* README.md */; };
 		1A3357D01C50C3D600B18DB3 /* UINavigationBar+Awesome.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A3357CF1C50C3D600B18DB3 /* UINavigationBar+Awesome.m */; };
 		1A447A101AC526E9003A0220 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A447A0F1AC526E9003A0220 /* main.m */; };
 		1A447A131AC526E9003A0220 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A447A121AC526E9003A0220 /* AppDelegate.m */; };
@@ -40,7 +39,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		1A3357C71C50BF5200B18DB3 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		1A3357CE1C50C3D600B18DB3 /* UINavigationBar+Awesome.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationBar+Awesome.h"; sourceTree = "<group>"; };
 		1A3357CF1C50C3D600B18DB3 /* UINavigationBar+Awesome.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationBar+Awesome.m"; sourceTree = "<group>"; };
 		1A447A0A1AC526E9003A0220 /* JMCategory.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JMCategory.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -137,7 +135,6 @@
 				1A447A171AC526E9003A0220 /* Main.storyboard */,
 				1A447A1A1AC526EA003A0220 /* Images.xcassets */,
 				1A447A1C1AC526EA003A0220 /* LaunchScreen.xib */,
-				1A3357C71C50BF5200B18DB3 /* README.md */,
 				1A447A0D1AC526E9003A0220 /* Supporting Files */,
 			);
 			path = JMCategory;
@@ -374,7 +371,6 @@
 				1AE13AFB1AC92B190027EA4E /* UITableViewCell+JMExtension.m in Sources */,
 				1A3357D01C50C3D600B18DB3 /* UINavigationBar+Awesome.m in Sources */,
 				1A447A131AC526E9003A0220 /* AppDelegate.m in Sources */,
-				1A3357C81C50BF5200B18DB3 /* README.md in Sources */,
 				1A447A481AC52ED8003A0220 /* UITableView+JMExtension.m in Sources */,
 				1A8917CE1C4F3E9B0074E68F /* CALayer+Layout.m in Sources */,
 				1ADE3FBF1ACBD06800E07FBE /* UILabel+JMExtension.m in Sources */,
