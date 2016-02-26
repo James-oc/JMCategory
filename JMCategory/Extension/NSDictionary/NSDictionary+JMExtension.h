@@ -8,8 +8,11 @@
 
 #import <Foundation/Foundation.h>
 
-@interface NSDictionary (Util)
-
+@interface NSDictionary (JMExtension)
+/**
+ *@description NSData转NSDictionary
+ *@return      void
+ */
 + (NSDictionary *)dictionaryWithContentsOfData:(NSData *)data;
 
 @end

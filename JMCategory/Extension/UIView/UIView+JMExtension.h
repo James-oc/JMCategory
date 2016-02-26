@@ -10,11 +10,18 @@
 
 @interface UIView (JMExtension)
 /**
- *@description 获取当前view的Controller
- *@return UIViewController
+ *@description  获取当前view的Controller
+ *@return       UIViewController
  */
--(UIViewController *) getViewController;
+- (UIViewController *)getViewController;
 
-+(UIView *) viewWithFrame:(CGRect) frame withBackgroundColor:(UIColor *) bgColor;
+/**
+ *@description 获取UIView对象
+ *@params      frame
+ *@params      bgColor
+ *@return      UIView
+ */
++ (UIView *)viewWithFrame:(CGRect) frame
+      withBackgroundColor:(UIColor *) bgColor;
 
 @end

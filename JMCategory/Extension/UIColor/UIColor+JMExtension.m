@@ -26,14 +26,14 @@
     }
     
     NSRange range;
-    range.location = 0;
-    range.length = 2;
+    range.location    = 0;
+    range.length      = 2;
     NSString *rString = [cString substringWithRange:range];
-    
-    range.location = 2;
+
+    range.location    = 2;
     NSString *gString = [cString substringWithRange:range];
-    
-    range.location = 4;
+
+    range.location    = 4;
     NSString *bString = [cString substringWithRange:range];
     
     unsigned int r, g, b;

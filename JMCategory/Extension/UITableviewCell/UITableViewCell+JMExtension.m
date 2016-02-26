@@ -12,10 +12,10 @@
 
 @implementation UITableViewCell (JMExtension)
 /**
- *@description 获取当前view的父view
+ *@description 获取当前cell的父view
  *@return UIView
  */
--(UIView *) getSuperview {
+- (UIView *)getSuperview {
     if (UITableviewCell_JMExtension_IS_IOS7_Later) {
         return self.superview.superview;
     }

@@ -17,10 +17,10 @@
 
 - (void)setFrameX:(CGFloat)x
 {
-    CGRect localFrame = self.frame;
+    CGRect localFrame   = self.frame;
     localFrame.origin.x = x;
-    
-    self.frame = localFrame;
+
+    self.frame          = localFrame;
 }
 
 - (CGFloat)frameY
@@ -30,10 +30,10 @@
 
 -(void)setFrameY:(CGFloat)y
 {
-    CGRect localFrame = self.frame;
+    CGRect localFrame   = self.frame;
     localFrame.origin.y = y;
-    
-    self.frame = localFrame;
+
+    self.frame          = localFrame;
 }
 
 - (CGFloat)frameWidth
@@ -43,10 +43,10 @@
 
 -(void)setFrameWidth:(CGFloat)width
 {
-    CGRect localFrame = self.frame;
+    CGRect localFrame     = self.frame;
     localFrame.size.width = width;
-    
-    self.frame = localFrame;
+
+    self.frame            = localFrame;
 }
 
 - (CGFloat)frameHeight
@@ -56,10 +56,10 @@
 
 - (void)setFrameHeight:(CGFloat)height
 {
-    CGRect localFrame = self.frame;
+    CGRect localFrame      = self.frame;
     localFrame.size.height = height;
-    
-    self.frame = localFrame;
+
+    self.frame             = localFrame;
 }
 
 - (CGFloat)centerX
@@ -70,9 +70,9 @@
 - (void)setCenterX:(CGFloat)centerX
 {
     CGPoint localPoint = self.anchorPoint;
-    localPoint.x = centerX;
-    
-    self.anchorPoint = localPoint;
+    localPoint.x       = centerX;
+
+    self.anchorPoint   = localPoint;
 }
 
 - (CGFloat)centerY
@@ -83,9 +83,9 @@
 - (void)setCenterY:(CGFloat)centerY
 {
     CGPoint localPoint = self.anchorPoint;
-    localPoint.y = centerY;
-    
-    self.anchorPoint = localPoint;
+    localPoint.y       = centerY;
+
+    self.anchorPoint   = localPoint;
 }
 
 - (CGSize)frameSize
@@ -95,8 +95,11 @@
 
 - (void)setFrameSize:(CGSize)frameSize
 {
-    self.frame = CGRectMake(self.frame.origin.x, self.frame.origin.y,
-                            frameSize.width, frameSize.height);
+    self.frame = CGRectMake(self.frame.origin.x,
+                            self.frame.origin.y,
+                                frameSize.width,
+                               frameSize.height
+                           );
 }
 
 - (CGFloat)top
@@ -106,8 +109,11 @@
 
 - (void)setTop:(CGFloat)top
 {
-    self.frame = CGRectMake(self.frame.origin.x, top,
-                            self.frame.size.width, self.frame.size.height);
+    self.frame = CGRectMake(self.frame.origin.x,
+                                            top,
+                          self.frame.size.width,
+                            self.frame.size.height
+                           );
 }
 
 - (CGFloat)bottom
@@ -117,8 +123,11 @@
 
 - (void)setBottom:(CGFloat)bottom
 {
-    self.frame = CGRectMake(self.frame.origin.x, bottom - self.frame.size.height,
-                            self.frame.size.width, self.frame.size.height);
+    self.frame = CGRectMake(self.frame.origin.x,
+                bottom - self.frame.size.height,
+                          self.frame.size.width,
+                         self.frame.size.height
+                           );
 }
 
 - (CGFloat)left
@@ -128,8 +137,11 @@
 
 - (void)setLeft:(CGFloat)left
 {
-    self.frame = CGRectMake(left, self.frame.origin.y,
-                            self.frame.size.width, self.frame.size.height);
+    self.frame = CGRectMake(left,
+             self.frame.origin.y,
+           self.frame.size.width,
+          self.frame.size.height
+                           );
 }
 
 - (CGFloat)right
@@ -139,8 +151,11 @@
 
 - (void)setRight:(CGFloat)right
 {
-    self.frame = CGRectMake(right - self.frame.size.width, self.frame.origin.y,
-                            self.frame.size.width, self.frame.size.height);
+    self.frame = CGRectMake(right - self.frame.size.width,
+                                      self.frame.origin.y,
+                                    self.frame.size.width,
+                            self.frame.size.height
+                           );
 }
 
 @end

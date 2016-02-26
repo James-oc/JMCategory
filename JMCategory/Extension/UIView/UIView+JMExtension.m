@@ -15,7 +15,7 @@
  *@description 获取当前view的Controller
  *@return UIViewController
  */
--(UIViewController *) getViewController {
+- (UIViewController *)getViewController {
     UIView *view = self;
     while (view) {
         UIResponder *nextResponder = view.nextResponder;
@@ -29,8 +29,15 @@
     return nil;
 }
 
-+(UIView *) viewWithFrame:(CGRect) frame withBackgroundColor:(UIColor *) bgColor {
-    UIView *view = [[UIView alloc] initWithFrame:frame];
+/**
+ *@description 获取UIView实例
+ *@params      frame
+ *@params      bgColor
+ *@return      UIView
+ */
++ (UIView *)viewWithFrame:(CGRect) frame
+      withBackgroundColor:(UIColor *) bgColor {
+    UIView *view         = [[UIView alloc] initWithFrame:frame];
     view.backgroundColor = bgColor;
     
     return view;

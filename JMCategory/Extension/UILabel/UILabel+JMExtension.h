@@ -9,16 +9,43 @@
 #import <UIKit/UIKit.h>
 
 @interface UILabel (JMExtension)
-
-+(UILabel *) labelWithRect:(CGRect) rect
-                  withFont:(float) fontSize
+/**
+ *@description  获取UILabel对象
+ *@params       rect
+ *@params       fontSize
+ *@params       textColor
+ *@return       UILabel
+ */
++ (UILabel *)labelWithRect:(CGRect)     rect
+                  withFont:(float)      fontSize
              withTextColor:(NSString *) textColor;
 
-+(UILabel *) labelWithRect:(CGRect) rect
-                  withFont:(float) fontSize
+/**
+ *@description  获取UILabel对象
+ *@params       rect
+ *@params       fontSize
+ *@params       textColor
+ *@params       bgColor
+ *@return       UILabel
+ */
++ (UILabel *)labelWithRect:(CGRect)     rect
+                  withFont:(float)      fontSize
              withTextColor:(NSString *) textColor
-       withBackgroundColor:(NSString *)bgColor;
+       withBackgroundColor:(NSString *) bgColor;
 
-+(UILabel *) labelWithFrame:(CGRect) frame withTextColor:(UIColor *) textColor withFont:(UIFont *) font withText:(NSString *) text withTextAlignment:(NSTextAlignment) textAlignment;
+/**
+ *@description  获取UILabel对象
+ *@params       rect
+ *@params       textColor
+ *@params       font
+ *@params       text
+ *@params       textAlignment
+ *@return       UILabel
+ */
++ (UILabel *)labelWithRect:(CGRect)             rect
+             withTextColor:(UIColor *)          textColor
+                  withFont:(UIFont *)           font
+                  withText:(NSString *)         text
+         withTextAlignment:(NSTextAlignment)    textAlignment;
 
 @end
