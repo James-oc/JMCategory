@@ -16,7 +16,7 @@
 @property (assign, nonatomic) CGFloat frameHeight;
 @property (assign, nonatomic) CGFloat centerX;
 @property (assign, nonatomic) CGFloat centerY;
-@property (assign, nonatomic) CGSize  frameSize;
+@property (assign, nonatomic) CGSize frameSize;
 
 @property (assign, nonatomic) CGFloat top;
 @property (assign, nonatomic) CGFloat bottom;

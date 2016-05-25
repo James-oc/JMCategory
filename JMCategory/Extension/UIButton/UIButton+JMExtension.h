@@ -1,9 +1,9 @@
 //
-//  UIButton+JMExtension.h
-//  JMCategory
+//  UIButton+Util.h
+//  XCharger
 //
-//  Created by james on 15/4/1.
-//  Copyright (c) 2015年 james. All rights reserved.
+//  Created by shengxiao on 15/12/1.
+//  Copyright © 2015年 shengxiao. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
@@ -15,74 +15,85 @@ typedef NS_OPTIONS(NSInteger,CImageTitleBtnType) {
 };
 
 @interface UIButton (JMExtension)
-/**
- *@description  获取UIButtonTypeCustom样式的UIButton对象
- *@params       rect
- *@params       imageName
- *@params       highlighted
- *@params       target
- *@params       action
- *@return       UIButton
- */
-+ (UIButton *)customBtnWithRect:(CGRect)        rect
-                  withImageName:(NSString *)    imageName
-               highlightedImage:(NSString *)    highlighted
-                      addTarget:(id)            target
-                         action:(SEL)           action;
 
-/**
- *@description  获取UIButton对象
- *@params       rect
- *@params       btnType
- *@params       titleColor
- *@params       titleFont
- *@params       title
- *@params       lineBreakMode
- *@return       UIButton
- */
-+(UIButton *) buttonWithRect:(CGRect)           rect
-              withButtonType:(UIButtonType)     btnType
-              withTitleColor:(UIColor *)        titleColor
-               withTitleFont:(UIFont *)         titleFont
-                   withTitle:(NSString *)       title
-           withLineBreakMode:(NSLineBreakMode)  lineBreakMode;
+#pragma mark - Init Button
++ (UIButton *)buttonWithFrame:(CGRect)frame
+                      btnType:(UIButtonType)btnType
+                        title:(NSString *)title
+                    titleFont:(UIFont *)titleFont
+                   titleColor:(UIColor *)titleColor;
 
-/**
- *@description  获取带图片UIButton对象
- *@params       title
- *@params       imageName
- *@params       textFont
- *@params       textColor
- *@params       btnType
- *@params       imageTitleBtnType
- *@return       UIButton
- */
-+(UIButton *) getImageBtnWithTitle:(NSString *)         title
-                     withImageName:(NSString *)         imageName
-                          withFont:(UIFont *)           textFont
-                     withTextColor:(UIColor *)          textColor
-                       withBtnType:(UIButtonType)       btnType
-             withImageTitleBtnType:(CImageTitleBtnType) imageTitleBtnType;
++ (UIButton *)buttonWithFrame:(CGRect)frame
+                      btnType:(UIButtonType)btnType
+                        title:(NSString *)title
+                    titleFont:(UIFont *)titleFont
+                   titleColor:(UIColor *)titleColor
+                       target:(id)target
+                     selector:(SEL)selector;
 
-/**
- *@description  获取带图片UIButton对象
- *@params       imageTitleBtnType
- *@params       title
- *@params       unSelectedImageName
- *@params       selectedImageName
- *@params       unSelectedColor
- *@params       selectedColor
- *@params       textFont
- *@params       btnType
- *@return       UIButton
- */
-+(UIButton *) getImageBtnWithImageTitleBtnType:(CImageTitleBtnType) imageTitleBtnType
-                                         title:(NSString *)         title
-                           unSelectedImageName:(NSString *)         unSelectedImageName
-                             selectedImageName:(NSString *)         selectedImageName
-                           unSelectedTextColor:(UIColor *)          unSelectedColor
-                             selectedTextColor:(UIColor *)          selectedColor
-                                  withTextFont:(UIFont *)           textFont
-                                   withBtnType:(UIButtonType)       btnType;
++ (UIButton *)buttonWithFrame:(CGRect)frame
+                      btnType:(UIButtonType)btnType
+                        title:(NSString *)title
+                    titleFont:(UIFont *)titleFont
+                   titleColor:(UIColor *)titleColor
+                lineBreakMode:(NSLineBreakMode)lineBreakMode
+              backgroundColor:(UIColor *)backgroundColor
+                textAlignment:(NSTextAlignment)textAlignment
+                  contentMode:(UIViewContentMode)contentMode;
+
++ (UIButton *)buttonWithFrame:(CGRect)frame
+                      btnType:(UIButtonType)btnType
+                        title:(NSString *)title
+                    titleFont:(UIFont *)titleFont
+                   titleColor:(UIColor *)titleColor
+                lineBreakMode:(NSLineBreakMode)lineBreakMode
+              backgroundColor:(UIColor *)backgroundColor
+                textAlignment:(NSTextAlignment)textAlignment
+                  contentMode:(UIViewContentMode)contentMode
+                       target:(id)target
+                     selector:(SEL)selector;
+
++ (UIButton *)buttonWithFrame:(CGRect)frame
+                      btnType:(UIButtonType)btnType
+                        image:(UIImage *)image;
+
++ (UIButton *)buttonWithFrame:(CGRect)frame
+                      btnType:(UIButtonType)btnType
+                        image:(UIImage *)image
+                       target:(id)target
+                     selector:(SEL)selector;
+
++ (UIButton *)buttonWithFrame:(CGRect)frame
+                      btnType:(UIButtonType)btnType
+                        image:(UIImage *)image
+              backgroundColor:(UIColor *)backgroundColor
+                  contentMode:(UIViewContentMode)contentMode
+            contentEdgeInsets:(UIEdgeInsets)edgeInsets;
+
++ (UIButton *)buttonWithFrame:(CGRect)frame
+                      btnType:(UIButtonType)btnType
+                        image:(UIImage *)image
+              backgroundColor:(UIColor *)backgroundColor
+                  contentMode:(UIViewContentMode)contentMode
+            contentEdgeInsets:(UIEdgeInsets)edgeInsets
+                       target:(id)target
+                     selector:(SEL)selector;
+
+#pragma mark - Init ImageButton
++ (UIButton *)getImageBtnWithType:(UIButtonType)btnType
+                     titleBtnType:(CImageTitleBtnType)imageTitleBtnType
+                            title:(NSString *)title
+                        imageName:(NSString *)imageName
+                        titleFont:(UIFont *)titleFont
+                       titleColor:(UIColor *)titleColor;
+
++ (UIButton *)getImageBtnWithWithType:(UIButtonType)btnType
+                         titleBtnType:(CImageTitleBtnType)imageTitleBtnType
+                                title:(NSString *)title
+                            titleFont:(UIFont *)textFont
+                  unSelectedImageName:(NSString *)unSelectedImageName
+                    selectedImageName:(NSString *)selectedImageName
+                  unSelectedTextColor:(UIColor *)unSelectedColor
+                    selectedTextColor:(UIColor *)selectedColor;
 
 @end

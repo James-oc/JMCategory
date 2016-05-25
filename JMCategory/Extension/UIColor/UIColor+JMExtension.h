@@ -12,8 +12,8 @@
 
 /**
  *@description 传递RGB值获取颜色
- *@params      stringToConvert
- *@return      UIColor
+ *@params stringToConvert
+ *@return UIColor
  */
 + (UIColor *)colorWithHexString:(NSString *)stringToConvert;
 

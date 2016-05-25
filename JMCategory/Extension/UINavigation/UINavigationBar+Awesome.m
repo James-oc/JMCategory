@@ -37,9 +37,11 @@ static char emptyImageKey;
 {
     if (!self.overlay) {
         [self setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
-        self.overlay = [[UIView alloc] initWithFrame:CGRectMake(0, -20, [UIScreen mainScreen].bounds.size.width, CGRectGetHeight(self.bounds) + 20)];
+        
+        self.overlay                        = [[UIView alloc] initWithFrame:CGRectMake(0, -20, [UIScreen mainScreen].bounds.size.width, CGRectGetHeight(self.bounds) + 20)];
         self.overlay.userInteractionEnabled = NO;
-        self.overlay.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight;
+        self.overlay.autoresizingMask       = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight;
+        
         [self insertSubview:self.overlay atIndex:0];
     }
     self.overlay.backgroundColor = backgroundColor;
@@ -55,11 +57,14 @@ static char emptyImageKey;
     if (!self.overlay) {
         [self lt_setBackgroundColor:self.barTintColor];
     }
+    
     [self setAlpha:alpha forSubviewsOfView:self];
+    
     if (alpha == 1) {
         if (!self.emptyImage) {
             self.emptyImage = [UIImage new];
         }
+        
         self.backIndicatorImage = self.emptyImage;
     }
 }
@@ -70,15 +75,21 @@ static char emptyImageKey;
         if (subview == self.overlay) {
             continue;
         }
+        
         subview.alpha = alpha;
-        [self setAlpha:alpha forSubviewsOfView:subview];
+        
+        [self setAlpha:alpha
+     forSubviewsOfView:subview];
     }
 }
 
 - (void)lt_reset
 {
-    [self setBackgroundImage:nil forBarMetrics:UIBarMetricsDefault];
+    [self setBackgroundImage:nil
+               forBarMetrics:UIBarMetricsDefault];
+    
     [self.overlay removeFromSuperview];
+    
     self.overlay = nil;
 }
 

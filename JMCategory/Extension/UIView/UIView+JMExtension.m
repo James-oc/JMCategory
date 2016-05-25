@@ -29,16 +29,10 @@
     return nil;
 }
 
-/**
- *@description 获取UIView实例
- *@params      frame
- *@params      bgColor
- *@return      UIView
- */
-+ (UIView *)viewWithFrame:(CGRect) frame
-      withBackgroundColor:(UIColor *) bgColor {
++ (UIView *)viewWithFrame:(CGRect)frame
+          backgroundColor:(UIColor *)backgroundColor{
     UIView *view         = [[UIView alloc] initWithFrame:frame];
-    view.backgroundColor = bgColor;
+    view.backgroundColor = backgroundColor;
     
     return view;
 }

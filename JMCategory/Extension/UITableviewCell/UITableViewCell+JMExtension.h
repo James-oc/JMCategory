@@ -10,10 +10,6 @@
 
 @interface UITableViewCell (JMExtension)
 
-/**
- *@description 获取当前cell的父view
- *@return      UIView
- */
 - (UIView *)getSuperview;
 
 @end

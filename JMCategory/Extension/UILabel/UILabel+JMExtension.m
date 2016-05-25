@@ -7,66 +7,90 @@
 //
 
 #import "UILabel+JMExtension.h"
-#import "UIColor+JMExtension.h"
 
 @implementation UILabel (JMExtension)
-/**
- *@description  获取UILabel对象
- *@params       rect
- *@params       fontSize
- *@params       textColor
- *@return       UILabel
- */
-+ (UILabel *)labelWithRect:(CGRect)     rect
-                  withFont:(float)      fontSize
-             withTextColor:(NSString *) textColor {
-    UILabel *label        = [[UILabel alloc] initWithFrame:rect];
-    label.font            = [UIFont systemFontOfSize:fontSize];
-    label.textColor       = [UIColor colorWithHexString:textColor];
+
+#pragma mark - Line Height
+- (void)setLineSpace:(float)lineSpace
+                text:(NSString *)text {
+    NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithString:text];
+    NSMutableParagraphStyle *paragraphStyle     = [[NSMutableParagraphStyle alloc] init];
+    
+    [paragraphStyle setLineSpacing:lineSpace];//调整行间距
+    
+    [attributedString addAttribute:NSParagraphStyleAttributeName
+                             value:paragraphStyle
+                             range:NSMakeRange(0, text.length)];
+    
+    self.text           = @"";
+    self.attributedText = attributedString;
+}
+
+#pragma mark - Init
++ (UILabel *)labelWithFrame:(CGRect)frame
+                   textFont:(UIFont *)textFont
+                  textColor:(UIColor *)textColor {
+    UILabel *label        = [[UILabel alloc] initWithFrame:frame];
+    label.font            = textFont;
+    label.textColor       = textColor;
     label.backgroundColor = [UIColor clearColor];
     
     return label;
 }
 
-/**
- *@description  获取UILabel对象
- *@params       rect
- *@params       fontSize
- *@params       textColor
- *@params       bgColor
- *@return       UILabel
- */
-+ (UILabel *)labelWithRect:(CGRect)     rect
-                  withFont:(float)      fontSize
-             withTextColor:(NSString *) textColor
-       withBackgroundColor:(NSString *) bgColor {
-    UILabel *label        = [self labelWithRect:rect
-                                withFont:fontSize
-                           withTextColor:textColor];
-    label.backgroundColor = [UIColor colorWithHexString:bgColor];
++ (UILabel *)labelWithFrame:(CGRect)frame
+                       text:(NSString *)text
+                   textFont:(UIFont *)textFont
+                  textColor:(UIColor *)textColor {
+    UILabel *label        = [UILabel labelWithFrame:frame
+                                           textFont:textFont
+                                          textColor:textColor];
+    label.text            = text;
     
     return label;
 }
 
-/**
- *@description  获取UILabel对象
- *@params       rect
- *@params       textColor
- *@params       font
- *@params       text
- *@params       textAlignment
- *@return       UILabel
- */
-+ (UILabel *)labelWithRect:(CGRect)             rect
-             withTextColor:(UIColor *)          textColor
-                  withFont:(UIFont *)           font
-                  withText:(NSString *)         text
-         withTextAlignment:(NSTextAlignment)    textAlignment {
-    UILabel *label      = [[UILabel alloc] initWithFrame:rect];
-    label.textColor     = textColor;
-    label.font          = font;
++ (UILabel *)labelWithFrame:(CGRect)frame
+                       text:(NSString *)text
+                   textFont:(UIFont *)textFont
+                  textColor:(UIColor *)textColor
+            backgroundColor:(UIColor *)backgroundColor {
+    UILabel *label        = [UILabel labelWithFrame:frame
+                                               text:text
+                                           textFont:textFont
+                                          textColor:textColor];
+    label.backgroundColor = backgroundColor;
+    
+    return label;
+}
+
+
++ (UILabel *)labelWithFrame:(CGRect)frame
+                       text:(NSString *)text
+                   textFont:(UIFont *)textFont
+                  textColor:(UIColor *)textColor
+              textAlignment:(NSTextAlignment)textAlignment {
+    UILabel *label      = [self labelWithFrame:frame
+                                          text:text
+                                      textFont:textFont
+                                     textColor:textColor];
     label.textAlignment = textAlignment;
-    label.text          = text;
+    
+    return label;
+}
+
++ (UILabel *)labelWithFrame:(CGRect)frame
+                       text:(NSString *)text
+                   textFont:(UIFont *)textFont
+                  textColor:(UIColor *)textColor
+            backgroundColor:(UIColor *)backgroundColor
+              textAlignment:(NSTextAlignment)textAlignment {
+    UILabel *label        = [self labelWithFrame:frame
+                                            text:text
+                                        textFont:textFont
+                                       textColor:textColor
+                                   textAlignment:textAlignment];
+    label.backgroundColor = backgroundColor;
     
     return label;
 }

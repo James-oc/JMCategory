@@ -1,90 +1,196 @@
 //
-//  UIButton+JMExtension.m
-//  JMCategory
+//  UIButton+Util.m
+//  XCharger
 //
-//  Created by james on 15/4/1.
-//  Copyright (c) 2015年 james. All rights reserved.
+//  Created by shengxiao on 15/12/1.
+//  Copyright © 2015年 shengxiao. All rights reserved.
 //
 
 #import "UIButton+JMExtension.h"
 
 @implementation UIButton (JMExtension)
-/**
- *@description  获取UIButtonTypeCustom样式的UIButton对象
- *@params       rect
- *@params       imageName
- *@params       highlighted
- *@params       target
- *@params       action
- *@return       UIButton
- */
-+ (UIButton *)customBtnWithRect:(CGRect)        rect
-                  withImageName:(NSString *)    imageName
-               highlightedImage:(NSString *)    highlighted
-                      addTarget:(id)            target
-                         action:(SEL)           action {
-    UIButton *customItem = [UIButton buttonWithType:UIButtonTypeCustom];
-    [customItem setImage:[UIImage imageNamed:imageName]
-                forState:UIControlStateNormal];
-    [customItem setImage:[UIImage imageNamed:highlighted]
-                forState:UIControlStateHighlighted];
-    [customItem setFrame:rect];
-    
-    [customItem addTarget:target
-                   action:action
-         forControlEvents:UIControlEventTouchUpInside];
-    
-    return customItem;
+
+#pragma mark - Init Button
++ (UIButton *)buttonWithFrame:(CGRect)frame
+                      btnType:(UIButtonType)btnType
+                        title:(NSString *)title
+                    titleFont:(UIFont *)titleFont
+                   titleColor:(UIColor *)titleColor {
+    return [self buttonWithFrame:frame
+                         btnType:btnType
+                           title:title
+                       titleFont:titleFont
+                      titleColor:titleColor
+                   lineBreakMode:NSLineBreakByWordWrapping
+                 backgroundColor:[UIColor clearColor]
+                   textAlignment:NSTextAlignmentLeft
+                     contentMode:UIViewContentModeScaleToFill
+                          target:nil
+                        selector:nil];
 }
 
-/**
- *@description  获取UIButton对象
- *@params       rect
- *@params       btnType
- *@params       titleColor
- *@params       titleFont
- *@params       title
- *@params       lineBreakMode
- *@return       UIButton
- */
-+(UIButton *) buttonWithRect:(CGRect)           rect
-              withButtonType:(UIButtonType)     btnType
-              withTitleColor:(UIColor *)        titleColor
-               withTitleFont:(UIFont *)         titleFont
-                   withTitle:(NSString *)       title
-           withLineBreakMode:(NSLineBreakMode)  lineBreakMode {
++ (UIButton *)buttonWithFrame:(CGRect)frame
+                      btnType:(UIButtonType)btnType
+                        title:(NSString *)title
+                    titleFont:(UIFont *)titleFont
+                   titleColor:(UIColor *)titleColor
+                       target:(id)target
+                     selector:(SEL)selector {
+    return [self buttonWithFrame:frame
+                         btnType:btnType
+                           title:title
+                       titleFont:titleFont
+                      titleColor:titleColor
+                   lineBreakMode:NSLineBreakByWordWrapping
+                 backgroundColor:[UIColor clearColor]
+                   textAlignment:NSTextAlignmentLeft
+                     contentMode:UIViewContentModeScaleToFill
+                          target:target
+                        selector:selector];
+}
+
++ (UIButton *)buttonWithFrame:(CGRect)frame
+                      btnType:(UIButtonType)btnType
+                        title:(NSString *)title
+                    titleFont:(UIFont *)titleFont
+                   titleColor:(UIColor *)titleColor
+                lineBreakMode:(NSLineBreakMode)lineBreakMode
+              backgroundColor:(UIColor *)backgroundColor
+                textAlignment:(NSTextAlignment)textAlignment
+                  contentMode:(UIViewContentMode)contentMode {
+    return [self buttonWithFrame:frame
+                         btnType:btnType
+                           title:title
+                       titleFont:titleFont
+                      titleColor:titleColor
+                   lineBreakMode:lineBreakMode
+                 backgroundColor:backgroundColor
+                   textAlignment:textAlignment
+                     contentMode:contentMode
+                          target:nil
+                        selector:nil];
+}
+
++ (UIButton *)buttonWithFrame:(CGRect)frame
+                      btnType:(UIButtonType)btnType
+                        title:(NSString *)title
+                    titleFont:(UIFont *)titleFont
+                   titleColor:(UIColor *)titleColor
+                lineBreakMode:(NSLineBreakMode)lineBreakMode
+              backgroundColor:(UIColor *)backgroundColor
+                textAlignment:(NSTextAlignment)textAlignment
+                  contentMode:(UIViewContentMode)contentMode
+                       target:(id)target
+                     selector:(SEL)selector {
     UIButton *btn                = [UIButton buttonWithType:btnType];
-    btn.frame                    = rect;
+    btn.frame                    = frame;
     btn.titleLabel.font          = titleFont;
     btn.titleLabel.lineBreakMode = lineBreakMode;
+    btn.backgroundColor          = backgroundColor;
+    btn.titleLabel.textAlignment = textAlignment;
+    btn.contentMode              = contentMode;
+
+    [btn setTitle:title
+         forState:UIControlStateNormal];
     
-    [btn setTitle:title forState:UIControlStateNormal];
-    [btn setTitleColor:titleColor forState:UIControlStateNormal];
+    [btn setTitleColor:titleColor
+              forState:UIControlStateNormal];
+    
+    if (selector && target) {
+        [btn addTarget:target
+                action:selector
+      forControlEvents:UIControlEventTouchUpInside];
+    }
     
     return btn;
 }
 
-/**
- *@description  获取带图片UIButton对象
- *@params       title
- *@params       imageName
- *@params       textFont
- *@params       textColor
- *@params       btnType
- *@params       imageTitleBtnType
- *@return       UIButton
- */
-+(UIButton *) getImageBtnWithTitle:(NSString *)         title
-                     withImageName:(NSString *)         imageName
-                          withFont:(UIFont *)           textFont
-                     withTextColor:(UIColor *)          textColor
-                       withBtnType:(UIButtonType)       btnType
-             withImageTitleBtnType:(CImageTitleBtnType) imageTitleBtnType {
-    UIButton    *btn           = [UIButton buttonWithType:btnType];
++ (UIButton *)buttonWithFrame:(CGRect)frame
+                      btnType:(UIButtonType)btnType
+                        image:(UIImage *)image {
+    return [self buttonWithFrame:frame
+                         btnType:btnType
+                           image:image
+                 backgroundColor:[UIColor clearColor]
+                     contentMode:UIViewContentModeScaleToFill
+               contentEdgeInsets:UIEdgeInsetsZero
+                          target:nil
+                        selector:nil];
+}
+
++ (UIButton *)buttonWithFrame:(CGRect)frame
+                      btnType:(UIButtonType)btnType
+                        image:(UIImage *)image
+                       target:(id)target
+                     selector:(SEL)selector {
+    return [self buttonWithFrame:frame
+                         btnType:btnType
+                           image:image
+                 backgroundColor:[UIColor clearColor]
+                     contentMode:UIViewContentModeScaleToFill
+               contentEdgeInsets:UIEdgeInsetsZero
+                          target:target
+                        selector:selector];
+}
+
++ (UIButton *)buttonWithFrame:(CGRect)frame
+                      btnType:(UIButtonType)btnType
+                        image:(UIImage *)image
+              backgroundColor:(UIColor *)backgroundColor
+                  contentMode:(UIViewContentMode)contentMode
+            contentEdgeInsets:(UIEdgeInsets)edgeInsets {
+    return [self buttonWithFrame:frame
+                         btnType:btnType
+                           image:image
+                 backgroundColor:backgroundColor
+                     contentMode:contentMode
+               contentEdgeInsets:edgeInsets
+                          target:nil
+                        selector:nil];
+}
+
++ (UIButton *)buttonWithFrame:(CGRect)frame
+                      btnType:(UIButtonType)btnType
+                        image:(UIImage *)image
+              backgroundColor:(UIColor *)backgroundColor
+                  contentMode:(UIViewContentMode)contentMode
+            contentEdgeInsets:(UIEdgeInsets)edgeInsets
+                       target:(id)target
+                     selector:(SEL)selector {
+    UIButton *btn         = [UIButton buttonWithType:btnType];
+    btn.frame             = frame;
+    btn.backgroundColor   = backgroundColor;
+    btn.contentMode       = contentMode;
+    btn.contentEdgeInsets = edgeInsets;
     
-    [btn setTitleColor:textColor forState:UIControlStateNormal];
-    btn.titleLabel.font = textFont;
+    if (image) {
+        image               = [image imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+        [btn setImage:image forState:UIControlStateNormal];
+    }
+    
+    if (selector && target) {
+        [btn addTarget:target
+                action:selector
+      forControlEvents:UIControlEventTouchUpInside];
+    }
+    
+    return btn;
+}
+
+#pragma mark - Init ImageButton
++ (UIButton *)getImageBtnWithType:(UIButtonType)btnType
+                     titleBtnType:(CImageTitleBtnType)imageTitleBtnType
+                            title:(NSString *)title
+                        imageName:(NSString *)imageName
+                        titleFont:(UIFont *)titleFont
+                       titleColor:(UIColor *)titleColor {
+    UIButton    *btn    = [UIButton buttonWithType:btnType];
+    btn.titleLabel.font = titleFont;
+
+    [btn setTitleColor:titleColor forState:UIControlStateNormal];
+    
     UIImage *image = nil;
+    
     if (imageName != nil) {
         image = [UIImage imageNamed:imageName];
         [btn setImage:image forState:UIControlStateNormal];
@@ -105,7 +211,7 @@
         CGFloat offset = 0.0f;
         [btn sizeToFit];
         btn.titleEdgeInsets = UIEdgeInsetsMake(0, -btn.imageView.frame.size.width, -btn.imageView.frame.size.height-offset/2, 0);
-        btn.imageEdgeInsets = UIEdgeInsetsMake(-btn.titleLabel.intrinsicContentSize.height-offset/2, 0, 0, -btn.titleLabel.intrinsicContentSize.width);
+        btn.imageEdgeInsets = UIEdgeInsetsMake(-btn.titleLabel.intrinsicContentSize.height - offset / 2, 0, 0, -btn.titleLabel.intrinsicContentSize.width);
     }else if (imageTitleBtnType == CImageAndTitleCoincide) {
         btn.contentHorizontalAlignment = UIControlContentHorizontalAlignmentCenter;
         btn.contentVerticalAlignment   = UIControlContentVerticalAlignmentCenter;
@@ -120,33 +226,22 @@
         [btn setImageEdgeInsets:UIEdgeInsetsMake(0.0, 0.0, 0.0, -btn.titleLabel.bounds.size.width)];
     }
     
-    CGRect frame = btn.frame;
+    CGRect frame   = btn.frame;
     frame.origin.x = 0;
     frame.origin.y = 0;
+    btn.frame      = frame;
     
     return btn;
 }
 
-/**
- *@description  获取带图片UIButton对象
- *@params       imageTitleBtnType
- *@params       title
- *@params       unSelectedImageName
- *@params       selectedImageName
- *@params       unSelectedColor
- *@params       selectedColor
- *@params       textFont
- *@params       btnType
- *@return       UIButton
- */
-+(UIButton *) getImageBtnWithImageTitleBtnType:(CImageTitleBtnType) imageTitleBtnType
-                                         title:(NSString *)         title
-                           unSelectedImageName:(NSString *)         unSelectedImageName
-                             selectedImageName:(NSString *)         selectedImageName
-                           unSelectedTextColor:(UIColor *)          unSelectedColor
-                             selectedTextColor:(UIColor *)          selectedColor
-                                  withTextFont:(UIFont *)           textFont
-                                   withBtnType:(UIButtonType)       btnType {
++ (UIButton *)getImageBtnWithWithType:(UIButtonType)btnType
+                         titleBtnType:(CImageTitleBtnType)imageTitleBtnType
+                                title:(NSString *)title
+                            titleFont:(UIFont *)textFont
+                  unSelectedImageName:(NSString *)unSelectedImageName
+                    selectedImageName:(NSString *)selectedImageName
+                  unSelectedTextColor:(UIColor *)unSelectedColor
+                    selectedTextColor:(UIColor *)selectedColor {
     UIButton    *btn    = [UIButton buttonWithType:btnType];
     
     btn.titleLabel.font = textFont;
@@ -204,9 +299,10 @@
         [btn setImageEdgeInsets:UIEdgeInsetsMake(0.0, 0.0, 0.0, -btn.titleLabel.bounds.size.width)];
     }
     
-    CGRect frame = btn.frame;
+    CGRect frame   = btn.frame;
     frame.origin.x = 0;
     frame.origin.y = 0;
+    btn.frame      = frame;
     
     return btn;
 }

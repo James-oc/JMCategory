@@ -9,43 +9,38 @@
 #import <UIKit/UIKit.h>
 
 @interface UILabel (JMExtension)
-/**
- *@description  获取UILabel对象
- *@params       rect
- *@params       fontSize
- *@params       textColor
- *@return       UILabel
- */
-+ (UILabel *)labelWithRect:(CGRect)     rect
-                  withFont:(float)      fontSize
-             withTextColor:(NSString *) textColor;
 
-/**
- *@description  获取UILabel对象
- *@params       rect
- *@params       fontSize
- *@params       textColor
- *@params       bgColor
- *@return       UILabel
- */
-+ (UILabel *)labelWithRect:(CGRect)     rect
-                  withFont:(float)      fontSize
-             withTextColor:(NSString *) textColor
-       withBackgroundColor:(NSString *) bgColor;
+#pragma mark - Line Height
+- (void)setLineSpace:(float)lineSpace
+                text:(NSString *)text;
 
-/**
- *@description  获取UILabel对象
- *@params       rect
- *@params       textColor
- *@params       font
- *@params       text
- *@params       textAlignment
- *@return       UILabel
- */
-+ (UILabel *)labelWithRect:(CGRect)             rect
-             withTextColor:(UIColor *)          textColor
-                  withFont:(UIFont *)           font
-                  withText:(NSString *)         text
-         withTextAlignment:(NSTextAlignment)    textAlignment;
+#pragma mark - Init
++ (UILabel *)labelWithFrame:(CGRect)frame
+                   textFont:(UIFont *)textFont
+                  textColor:(UIColor *)textColor;
+
++ (UILabel *)labelWithFrame:(CGRect)frame
+                       text:(NSString *)text
+                   textFont:(UIFont *)textFont
+                  textColor:(UIColor *)textColor;
+
++ (UILabel *)labelWithFrame:(CGRect)frame
+                       text:(NSString *)text
+                   textFont:(UIFont *)textFont
+                  textColor:(UIColor *)textColor
+            backgroundColor:(UIColor *)backgroundColor;
+
++ (UILabel *)labelWithFrame:(CGRect)frame
+                       text:(NSString *)text
+                   textFont:(UIFont *)textFont
+                  textColor:(UIColor *)textColor
+              textAlignment:(NSTextAlignment)textAlignment;
+
++ (UILabel *)labelWithFrame:(CGRect)frame
+                       text:(NSString *)text
+                   textFont:(UIFont *)textFont
+                  textColor:(UIColor *)textColor
+            backgroundColor:(UIColor *)backgroundColor
+              textAlignment:(NSTextAlignment)textAlignment;
 
 @end
