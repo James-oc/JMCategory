@@ -30,23 +30,76 @@
 ```
 ## UITableView+JMExtension.h
 ```OC
++ (UITableView *)tableViewWithFrame:(CGRect)frame
+                         dataSource:(id)dataSource
+                           delegate:(id)delegate;
+
++ (UITableView *)tableViewWithFrame:(CGRect)frame
+                              style:(UITableViewStyle)style
+                         dataSource:(id)dataSource
+                           delegate:(id)delegate;
+
++ (UITableView *)tableViewWithFrame:(CGRect)frame
+                    backgroundColor:(UIColor *)backgroundColor
+                         dataSource:(id)dataSource
+                           delegate:(id)delegate;
+
++ (UITableView *)tableViewWithFrame:(CGRect)frame
+                              style:(UITableViewStyle)style
+                    backgroundColor:(UIColor *)backgroundColor
+                         dataSource:(id)dataSource
+                           delegate:(id)delegate;
+
++ (UITableView *)tableViewWithFrame:(CGRect)frame
+                              style:(UITableViewStyle)style
+                     separatorStyle:(UITableViewCellSeparatorStyle)separatorStyle
+               alwaysBounceVertical:(BOOL)alwaysBounceVertical
+                      scrollEnabled:(BOOL)scrollEnabled
+                    backgroundColor:(UIColor *)backgroundColor
+                         dataSource:(id)dataSource
+                           delegate:(id)delegate;
+
++ (UITableView *)tableViewWithFrame:(CGRect)frame
+                              style:(UITableViewStyle)style
+                     separatorStyle:(UITableViewCellSeparatorStyle)separatorStyle
+               alwaysBounceVertical:(BOOL)alwaysBounceVertical
+                      scrollEnabled:(BOOL)scrollEnabled
+                    backgroundColor:(UIColor *)backgroundColor
+                         dataSource:(id)dataSource
+                           delegate:(id)delegate
+             userInteractionEnabled:(BOOL)userInteractionEnabled;
+
 /**
  *@description 去掉UITableview底部多余的线
- *@return      void
+ *@return void
  */
 - (void)setTableviewExtraCellLineHidden;
 
 /**
  *@description 刷新特定的NSIndexPath 所对应的 UITableviewCell
- *@return      void
+ *@return void
  */
 - (void)refreshTableviewCellWithIndexPath:(NSIndexPath *) path;
 
 /**
- *@description 刷新特定的NSIndexPath数组 所对应的 UITableviewCell组
- *@return      void
+ *@description 刷新特定的NSIndexPath 所对应的 UITableviewCell(可设置动画)
+ *@return void
  */
-- (void)refreshTableviewCellWithIndexPathArray:(NSMutableArray *) indexPathArray;
+- (void)refreshTableviewCellWithIndexPath:(NSIndexPath *)path
+                             rowAnimation:(UITableViewRowAnimation)rowAnimation;
+
+/**
+ *@description 刷新特定的NSIndexPath数组 所对应的 UITableviewCell组
+ *@return void
+ */
+- (void)refreshTableviewCellWithIndexPathArray:(NSMutableArray *)indexPathArray;
+
+/**
+ *@description 刷新特定的NSIndexPath数组 所对应的 UITableviewCell组(可设置动画)
+ *@return void
+ */
+- (void)refreshTableviewCellWithIndexPathArray:(NSMutableArray *)indexPathArray
+                              rowAnimation:(UITableViewRowAnimation)rowAnimation;
 ```
 ## UITableViewCell+JMExtension.h
 ```OC
@@ -79,8 +132,8 @@
  *@params      bgColor
  *@return      UIView
  */
-+ (UIView *)viewWithFrame:(CGRect) frame
-      withBackgroundColor:(UIColor *) bgColor;
++ (UIView *)viewWithFrame:(CGRect)frame
+          backgroundColor:(UIColor *)backgroundColor;
 ```
 ## UIView+Layout.h
 ```OC
@@ -102,116 +155,120 @@
 ```
 ## UILabel+JMExtension.h
 ```OC
-/**
- *@description  获取UILabel对象
- *@params       rect
- *@params       fontSize
- *@params       textColor
- *@return       UILabel
- */
-+ (UILabel *)labelWithRect:(CGRect)     rect
-                  withFont:(float)      fontSize
-             withTextColor:(NSString *) textColor;
+#pragma mark - Line Height
+- (void)setLineSpace:(float)lineSpace
+                text:(NSString *)text;
 
-/**
- *@description  获取UILabel对象
- *@params       rect
- *@params       fontSize
- *@params       textColor
- *@params       bgColor
- *@return       UILabel
- */
-+ (UILabel *)labelWithRect:(CGRect)     rect
-                  withFont:(float)      fontSize
-             withTextColor:(NSString *) textColor
-       withBackgroundColor:(NSString *) bgColor;
+#pragma mark - Init
++ (UILabel *)labelWithFrame:(CGRect)frame
+                   textFont:(UIFont *)textFont
+                  textColor:(UIColor *)textColor;
 
-/**
- *@description  获取UILabel对象
- *@params       rect
- *@params       textColor
- *@params       font
- *@params       text
- *@params       textAlignment
- *@return       UILabel
- */
-+ (UILabel *)labelWithRect:(CGRect)             rect
-             withTextColor:(UIColor *)          textColor
-                  withFont:(UIFont *)           font
-                  withText:(NSString *)         text
-         withTextAlignment:(NSTextAlignment)    textAlignment;
++ (UILabel *)labelWithFrame:(CGRect)frame
+                       text:(NSString *)text
+                   textFont:(UIFont *)textFont
+                  textColor:(UIColor *)textColor;
+
++ (UILabel *)labelWithFrame:(CGRect)frame
+                       text:(NSString *)text
+                   textFont:(UIFont *)textFont
+                  textColor:(UIColor *)textColor
+            backgroundColor:(UIColor *)backgroundColor;
+
++ (UILabel *)labelWithFrame:(CGRect)frame
+                       text:(NSString *)text
+                   textFont:(UIFont *)textFont
+                  textColor:(UIColor *)textColor
+              textAlignment:(NSTextAlignment)textAlignment;
+
++ (UILabel *)labelWithFrame:(CGRect)frame
+                       text:(NSString *)text
+                   textFont:(UIFont *)textFont
+                  textColor:(UIColor *)textColor
+            backgroundColor:(UIColor *)backgroundColor
+              textAlignment:(NSTextAlignment)textAlignment;
 ```
 ## UIButton+JMExtension.h
 ```OC
-/**
- *@description  获取UIButtonTypeCustom样式的UIButton对象
- *@params       rect
- *@params       imageName
- *@params       highlighted
- *@params       target
- *@params       action
- *@return       UIButton
- */
-+ (UIButton *)customBtnWithRect:(CGRect)        rect
-                  withImageName:(NSString *)    imageName
-               highlightedImage:(NSString *)    highlighted
-                      addTarget:(id)            target
-                         action:(SEL)           action;
+#pragma mark - Init Button
++ (UIButton *)buttonWithFrame:(CGRect)frame
+                      btnType:(UIButtonType)btnType
+                        title:(NSString *)title
+                    titleFont:(UIFont *)titleFont
+                   titleColor:(UIColor *)titleColor;
 
-/**
- *@description  获取UIButton对象
- *@params       rect
- *@params       btnType
- *@params       titleColor
- *@params       titleFont
- *@params       title
- *@params       lineBreakMode
- *@return       UIButton
- */
-+(UIButton *) buttonWithRect:(CGRect)           rect
-              withButtonType:(UIButtonType)     btnType
-              withTitleColor:(UIColor *)        titleColor
-               withTitleFont:(UIFont *)         titleFont
-                   withTitle:(NSString *)       title
-           withLineBreakMode:(NSLineBreakMode)  lineBreakMode;
++ (UIButton *)buttonWithFrame:(CGRect)frame
+                      btnType:(UIButtonType)btnType
+                        title:(NSString *)title
+                    titleFont:(UIFont *)titleFont
+                   titleColor:(UIColor *)titleColor
+                       target:(id)target
+                     selector:(SEL)selector;
 
-/**
- *@description  获取带图片UIButton对象
- *@params       title
- *@params       imageName
- *@params       textFont
- *@params       textColor
- *@params       btnType
- *@params       imageTitleBtnType
- *@return       UIButton
- */
-+(UIButton *) getImageBtnWithTitle:(NSString *)         title
-                     withImageName:(NSString *)         imageName
-                          withFont:(UIFont *)           textFont
-                     withTextColor:(UIColor *)          textColor
-                       withBtnType:(UIButtonType)       btnType
-             withImageTitleBtnType:(CImageTitleBtnType) imageTitleBtnType;
++ (UIButton *)buttonWithFrame:(CGRect)frame
+                      btnType:(UIButtonType)btnType
+                        title:(NSString *)title
+                    titleFont:(UIFont *)titleFont
+                   titleColor:(UIColor *)titleColor
+                lineBreakMode:(NSLineBreakMode)lineBreakMode
+              backgroundColor:(UIColor *)backgroundColor
+                textAlignment:(NSTextAlignment)textAlignment
+                  contentMode:(UIViewContentMode)contentMode;
 
-/**
- *@description  获取带图片UIButton对象
- *@params       imageTitleBtnType
- *@params       title
- *@params       unSelectedImageName
- *@params       selectedImageName
- *@params       unSelectedColor
- *@params       selectedColor
- *@params       textFont
- *@params       btnType
- *@return       UIButton
- */
-+(UIButton *) getImageBtnWithImageTitleBtnType:(CImageTitleBtnType) imageTitleBtnType
-                                         title:(NSString *)         title
-                           unSelectedImageName:(NSString *)         unSelectedImageName
-                             selectedImageName:(NSString *)         selectedImageName
-                           unSelectedTextColor:(UIColor *)          unSelectedColor
-                             selectedTextColor:(UIColor *)          selectedColor
-                                  withTextFont:(UIFont *)           textFont
-                                   withBtnType:(UIButtonType)       btnType;
++ (UIButton *)buttonWithFrame:(CGRect)frame
+                      btnType:(UIButtonType)btnType
+                        title:(NSString *)title
+                    titleFont:(UIFont *)titleFont
+                   titleColor:(UIColor *)titleColor
+                lineBreakMode:(NSLineBreakMode)lineBreakMode
+              backgroundColor:(UIColor *)backgroundColor
+                textAlignment:(NSTextAlignment)textAlignment
+                  contentMode:(UIViewContentMode)contentMode
+                       target:(id)target
+                     selector:(SEL)selector;
+
++ (UIButton *)buttonWithFrame:(CGRect)frame
+                      btnType:(UIButtonType)btnType
+                        image:(UIImage *)image;
+
++ (UIButton *)buttonWithFrame:(CGRect)frame
+                      btnType:(UIButtonType)btnType
+                        image:(UIImage *)image
+                       target:(id)target
+                     selector:(SEL)selector;
+
++ (UIButton *)buttonWithFrame:(CGRect)frame
+                      btnType:(UIButtonType)btnType
+                        image:(UIImage *)image
+              backgroundColor:(UIColor *)backgroundColor
+                  contentMode:(UIViewContentMode)contentMode
+            contentEdgeInsets:(UIEdgeInsets)edgeInsets;
+
++ (UIButton *)buttonWithFrame:(CGRect)frame
+                      btnType:(UIButtonType)btnType
+                        image:(UIImage *)image
+              backgroundColor:(UIColor *)backgroundColor
+                  contentMode:(UIViewContentMode)contentMode
+            contentEdgeInsets:(UIEdgeInsets)edgeInsets
+                       target:(id)target
+                     selector:(SEL)selector;
+
+#pragma mark - Init ImageButton
++ (UIButton *)getImageBtnWithType:(UIButtonType)btnType
+                     titleBtnType:(CImageTitleBtnType)imageTitleBtnType
+                            title:(NSString *)title
+                        imageName:(NSString *)imageName
+                        titleFont:(UIFont *)titleFont
+                       titleColor:(UIColor *)titleColor;
+
++ (UIButton *)getImageBtnWithWithType:(UIButtonType)btnType
+                         titleBtnType:(CImageTitleBtnType)imageTitleBtnType
+                                title:(NSString *)title
+                            titleFont:(UIFont *)textFont
+                  unSelectedImageName:(NSString *)unSelectedImageName
+                    selectedImageName:(NSString *)selectedImageName
+                  unSelectedTextColor:(UIColor *)unSelectedColor
+                    selectedTextColor:(UIColor *)selectedColor;
 ```
 ## 持续更新中......
 
